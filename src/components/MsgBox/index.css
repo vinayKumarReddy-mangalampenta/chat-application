@@ -1,0 +1,27 @@
+.right {
+    align-self: flex-end;
+    float: right;
+    background-color: azure;
+    display: flex;
+    flex-direction: row-reverse;
+    border-top-left-radius:10px ;
+    border-bottom-right-radius:10px ;
+    border-bottom-left-radius:10px ;
+}
+
+
+.left {
+    float: left;
+    background-color: aqua;
+    border-top-right-radius:10px ;
+    border-bottom-right-radius:10px ;
+    border-bottom-left-radius:10px ;
+}
+
+.msg {
+   
+    max-width: 80%;
+    width: fit-content;
+    padding: 0 20px;
+    margin-bottom: 10px;
+}

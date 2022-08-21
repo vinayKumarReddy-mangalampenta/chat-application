@@ -1,0 +1,68 @@
+.msg-con {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    margin: 0;
+    flex: 8;
+    overflow: auto;
+    margin-top: 10px;
+    padding-bottom: 70px;
+}
+
+/* .msg-con::-webkit-scrollbar {
+
+    width: 10px;
+} */
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+
+}
+
+.msg-input {
+    bottom: 0;
+    display: fixed;
+    margin-top: 10px;
+    width: 100vw;
+    position: fixed;
+    margin: 0 !important;
+    padding: 0;
+
+}
+
+.user-msg-input {
+    width: 100%;
+    outline: none;
+    flex: 3;
+}
+
+.chat-con {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-form {
+    display: flex;
+    width: 100%;
+}
+
+.send-btn {
+    width: 80px;
+}
