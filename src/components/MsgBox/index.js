@@ -3,7 +3,7 @@ import "./index.css"
 const MsgBox = (props) => {
     const { message, isSender } = props
     const { msgText, name } = message
-
+    // console.log(message)
     const itemClass = isSender ? "right" : "left"
     return (
         <li className={`msg ${itemClass}`}>
