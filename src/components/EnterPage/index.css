@@ -1,0 +1,253 @@
+.main {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://wallpapercave.com/wp/wp4425802.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.desktop-image {
+    max-width: 50%;
+}
+
+.desktop-filler {
+    width: 100%;
+    max-width: 480px;
+}
+
+.label {
+    font-size: 21px;
+    font-weight: 630;
+    color: #06122e;
+
+}
+
+.form-input {
+    display: flex;
+    line-height: 30px;
+    border: 2px solid;
+    width: 98%;
+    outline: none;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.btn {
+    background-color: #042d8d;
+    color: white;
+    font-size: 18px;
+    padding: 4px 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 540;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    margin-right: 19px;
+}
+
+.btn:disabled {
+    background: #ccc;
+    cursor: not-allowed !important
+}
+
+.btn-con {
+    margin-top: 20px;
+}
+
+.login-container {
+    margin: auto;
+    width: 70%;
+    max-width: 400px;
+    min-width: 150px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.choose {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.auth-btn {
+    flex: 0.5;
+    font-family: "Roboto";
+    color: #9aa5b1;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.active-btn {
+    border-bottom: 2px solid #0b69ff;
+    color: #152636;
+    font-size: 18px;
+}
+
+.number-input {
+    line-height: 30px;
+    font-size: 18px;
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    align-self: center;
+    width: 100%;
+}
+
+.logo-con {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+   
+    margin-bottom: 10px;
+}
+
+.logo {
+    height: 100%;
+}
+
+.logo-text {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.mobile {
+    display: none;
+    width: 100%;
+    height: 50px;
+}
+
+.desktop {
+    width: 100%;
+    height: 50px;
+}
+
+@media (max-width:678px) {
+    .main {
+        flex-direction: column;
+        justify-items: space-around;
+        background-image: url('https://www.techgrapple.com/wp-content/uploads/2016/08/Colorful-Wechat-and-whatsapp-theme-1.jpg');
+    }
+
+    .desktop {
+        display: none;
+
+    }
+
+   
+    /* .number-input {
+        font-size: 13px;
+    } */
+
+    .mobile {
+        display: flex;
+        height: 100px;
+        margin-top: 40px;
+        color: white !important;
+    }
+
+    .desktop-image {
+        display: none;
+    }
+
+}
+
+/* 
+.modal {
+    font-size: 12px;
+  }
+  .modal > .header {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+  }
+  .modal > .content {
+    width: 100%;
+    padding: 10px 5px;
+  }
+  .modal > .actions {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+  }
+  .modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+  } */
+
+.popup-content {
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.modal {
+    border-radius: 10px;
+}
+
+.verification {
+    text-align: center;
+    font-size: 29px;
+    font-weight: 600;
+    color: black;
+
+}
+
+.verify-otp-text {
+    color: #2a23be;
+}
+
+.errMsg {
+    color: red;
+}
+
+.Header {
+    background-color: #2a23be;
+    display: flex;
+    padding: 4px 8px;
+    align-items: center;
+    justify-content: space-between;
+    /* position:fixed; */
+    /* top: 0; */
+    /* width: 100%; */
+    height: 50px;
+}
+.Header > .logo-con {
+    height: 35px;
+    margin: 0;
+}
+.Header > h2 {
+    color: white ;
+}
+.Header > .btn {
+    background-color: #40182c;
+
+}

@@ -13,7 +13,7 @@ import { initializeApp } from "firebase/app";
 // // var ref = firebase.database().ref('players');
 
 // import { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved, set, get, child, onValue } from "firebase/database";
-
+import Cookies from "js-cookie";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 // const  Timestamp = firebase.firestore.Timestamp;
 import { Timestamp } from "firebase/firestore";
@@ -58,19 +58,26 @@ class ChatWindow extends Component {
     state = {
         msgInput: "",
         array: [],
+        userNum: "",
         senderName: ""
     }
 
     componentDidMount() {
-        const name = localStorage.getItem("name");
-        // this.fetchMessages()
-        this.setState({ senderName: name })
+        const name = Cookies.get('ACCESS_TOKEN');
+        const userNum = Cookies.get('ACCESS_TOKEN2');
+        this.setState({ senderName: name, userNum })
+        if (document.getElementById('messages').scrollHeight < 1000) {
+            document.getElementById("scroller").style.display = "none"
+        }
         // const starCountRef = ;
         // onValue(ref(dbRef, 'messages/'), (snapshot) => {
         //     const data = snapshot.val();
         //     console.log(data)
         // });
+
+       
         this.getMessages()
+
     }
 
 
@@ -92,7 +99,8 @@ class ChatWindow extends Component {
         onValue(starCountRef, (snapshot) => {
             if (snapshot.exists()) {
                 const dataObject = snapshot.val();
-                console.log(dataObject)
+                // console.log(daa)
+
                 var dataArray = Object.keys(dataObject).map(function (k) { return dataObject[k] });
                 const sortByDate = arr => {
                     const sorter = (a, b) => {
@@ -100,10 +108,11 @@ class ChatWindow extends Component {
                     }
                     arr.sort(sorter);
                 };
+
                 sortByDate(dataArray)
                 this.setState({ array: dataArray })
-                document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight + 20
-
+                document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight + 200
+                // document.getElementById("messages").scrollIntoView()
             }
         });
     }
@@ -112,19 +121,30 @@ class ChatWindow extends Component {
         const db = getDatabase();
         const newId = uuidv4()
         let event = new Date()
-
+        const timeStamp = Timestamp.now()
         const data = {
             name: userName,
             msgText: userMsg,
             id: newId,
+            msgID: timeStamp,
             time: `${event}`,
+            number: this.state.userNum,
+            color: `${"#" + Math.floor(Math.random() * 0x1000000).toString(16)}`
         }
-        console.log(Timestamp.now())
-        set(ref(db, `messages/${Timestamp.now()}`), data);
+
+        set(ref(db, `messages/${timeStamp}`), data);
         // this.getMessages()
     }
 
 
+    onDeleteMsg = (id) => {
+        const db = getDatabase();
+        alert("We Are having some trouble on delete option we will bring that back ASAP")
+        // set(ref(db, `messages/Timestamp(seconds=${id.seconds}, nanoseconds=${id.nanoseconds})`), null)
+        //     .catch((error) => {
+        //         alert("Unable Delete MSg Please check your Internet Connection")
+        //     });
+    }
 
     OnSendMsg = (event) => {
         event.preventDefault()
@@ -138,7 +158,25 @@ class ChatWindow extends Component {
                 // }],
                 msgInput: ""
             }))
+
             document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight + 20
+        }
+
+    }
+
+    scrollToBottom = () => {
+        document.getElementById('messages').animate({ scrollTop: document.getElementById('messages').scrollHeight }, {
+            duration: 2000,
+            iterations: 1,
+        });
+        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight + 20
+
+    }
+    onScroll = () => {
+        if (document.getElementById('messages').scrollHeight - document.getElementById('messages').scrollTop > 900) {
+            document.getElementById("scroller").style.display = "flex"
+        } else {
+            document.getElementById("scroller").style.display = "none"
         }
 
     }
@@ -147,27 +185,35 @@ class ChatWindow extends Component {
         // const { senderName, array, msgInput } = this.state
         // const starCountRef = ref(dbRef, 'messages/');
         // this.fetchMessages()
-
-        const { array, msgInput, senderName } = this.state
+        // window.onscroll(() => {
+        //     console.log("scrolling")
+        // })
+        const { array, msgInput, userNum } = this.state
+        // const array1 = [...array,{}]
         return (
+
             <div className="chat-con">
                 <Header />
-                <ul className="msg-con" id="messages">
+                <div className="msg-con" onScroll={this.onScroll} id="messages">
+                    <h1 className="welcome-msg">Welcome To Phenix Chat App</h1>
                     {
 
                         array.map((eachMsg) => (
-                            <MsgBox key={eachMsg.id} message={eachMsg} isSender={eachMsg.name === senderName} />
+                            <MsgBox key={eachMsg.id} onDeleteMsg={this.onDeleteMsg} message={eachMsg} isSender={eachMsg.number === userNum} />
                         ))
                     }
-                </ul>
+                    <div className="emptyElement" > hello dude</div>
+                </div>
+                {/* {this.scrollmsgs()} */}
                 <div className="msg-input m-2">
                     <form onSubmit={this.OnSendMsg} className="my-form">
                         <input value={msgInput} onChange={(e) => {
                             this.setState({ msgInput: e.target.value })
-                        }} type="text" className="user-msg-input " placeholder="Enter Your Message Here " />
-                        <button type="submit" className="send-btn btn btn-primary">send</button>
+                        }} type="text" className="user-msg-input" placeholder="Enter Your Message Here " />
+                        <button type="submit" className="btn btn-primary send-btn ">send</button>
                     </form>
                 </div>
+                <button onClick={this.scrollToBottom} id="scroller"><div ><span>|</span><span className="arrow">{`>`}</span></div></button>
             </div>
         )
     }

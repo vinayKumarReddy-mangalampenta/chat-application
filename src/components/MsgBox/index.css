@@ -1,27 +1,177 @@
 .right {
-    align-self: flex-end;
-    float: right;
-    background-color: azure;
-    display: flex;
-    flex-direction: row-reverse;
-    border-top-left-radius:10px ;
-    border-bottom-right-radius:10px ;
-    border-bottom-left-radius:10px ;
+  align-self: flex-end;
+  float: right;
+  background-color: azure;
+  display: flex;
+  flex-direction: row-reverse;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 
 .left {
-    float: left;
-    background-color: aqua;
-    border-top-right-radius:10px ;
-    border-bottom-right-radius:10px ;
-    border-bottom-left-radius:10px ;
+  float: left;
+  background-color: aqua;
+  background: #fff;
+  border-radius: 0px 5px 5px 5px;
+  float: left;
 }
 
-.msg {
-   
-    max-width: 80%;
-    width: fit-content;
-    padding: 0 20px;
-    margin-bottom: 10px;
+.left:after {
+  border-width: 0px 10px 10px 0;
+  border-color: transparent #fff transparent transparent;
+  top: 0;
+  left: -10px;
+}
+
+
+.username {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 10ch;
+  font-weight: 480;
+  font-size: 16px;
+}
+
+.message {
+  color: #000;
+  clear: both;
+  line-height: 18px;
+  font-size: 18px;
+  padding: 8px;
+  position: relative;
+  margin: 8px 0;
+  width: fit-content;
+  max-width: 85%;
+  min-width: 80px;
+  word-wrap: break-word;
+  padding-right: 8px;
+  /* z-index: -1; */
+}
+
+.message:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+
+.message:first-child {
+  margin: 16px 0 8px;
+}
+
+.message.received {
+  background: #fff;
+  border-radius: 0px 5px 5px 5px;
+  float: left;
+
+}
+
+
+.message.received:after {
+  border-width: 0px 10px 10px 0;
+  border-color: transparent #fff transparent transparent;
+  top: 0;
+  left: -10px;
+}
+
+.message.sent {
+  background: #e1ffc7;
+  border-radius: 5px 0px 5px 5px;
+  float: right;
+  margin-left: auto;
+}
+
+.message.sent:after {
+  border-width: 0px 0 10px 10px;
+  border-color: transparent transparent transparent #e1ffc7;
+  top: 0;
+  right: -10px;
+}
+
+
+
+.metadata {
+  display: inline-block;
+  float: right;
+  padding: 0 0 0 7px;
+  position: relative;
+  bottom: -4px;
+}
+
+.metadata .time {
+  color: rgba(0, 0, 0, .45);
+  font-size: 13px;
+  display: inline-block;
+}
+
+.delete-small {
+  /* position: absolute;
+  display: none;
+  /* top: -10px; */
+  /* left: -100%; */
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: red;
+
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  display: none;
+  cursor: pointer;
+}
+
+.delete {
+  position: absolute;
+  display: none;
+  top: 10px;
+  left: -27px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: red;
+
+  cursor: pointer;
+}
+
+
+
+
+.threedots {
+  background-color: transparent;
+  border-radius: 100%;
+  border: 0;
+  right: 5px;
+  top: 0;
+  outline: none;
+  cursor: pointer;
+  color: grey;
+  position: absolute;
+}
+
+.threedots:active,
+.threedots:focus .delete-small {
+  display: flex;
+  right: 10px;
+}
+
+@media (min-width:672px) {
+  .message:hover .delete {
+    display: inline;
+  }
+
+  .delete-small {
+    display: none;
+  }
+
+  .threedots:active,
+  .threedots:focus .delete-small {
+    display: none;
+  }
 }

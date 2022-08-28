@@ -1,19 +1,26 @@
+.chat-con {
+    height: 100vh;
+    overflow: hidden;
+}
 .msg-con {
-    list-style-type: none;
     display: flex;
     flex-direction: column;
     padding: 0 10px;
     margin: 0;
-    flex: 8;
+
+    /* overflow: auto; */
+    background-image: url('https://i.pinimg.com/originals/40/39/e0/4039e0f1ef08b7b965bacb4641a7af49.jpg');
+    height: calc(100% - 90px);
     overflow: auto;
-    margin-top: 10px;
-    padding-bottom: 70px;
 }
 
-/* .msg-con::-webkit-scrollbar {
-
-    width: 10px;
-} */
+.emptyElement {
+    height: 30px;
+    content: "";
+    visibility: hidden;
+    width: 100%;
+    margin-bottom: 39px;
+}
 
 ::-webkit-scrollbar {
     width: 4px;
@@ -38,18 +45,29 @@
 .msg-input {
     bottom: 0;
     display: fixed;
-    margin-top: 10px;
-    width: 100vw;
+    height: 40px;
+    width: 100%;
     position: fixed;
     margin: 0 !important;
     padding: 0;
 
+
 }
 
 .user-msg-input {
-    width: 100%;
+    /* width: calc(100%-80px); */
+    flex: 1;
+    font-size: 23px;
     outline: none;
-    flex: 3;
+    width: 80%;
+    background-color: white;
+    
+}
+@media (max-width:600px){
+    .user-msg-input {
+        width:80%;
+        /* flex: 0; */
+    }
 }
 
 .chat-con {
@@ -61,8 +79,72 @@
 .my-form {
     display: flex;
     width: 100%;
+    height: 100%;
 }
 
 .send-btn {
-    width: 80px;
+    width: 100px;
+    margin: 0;
+}
+
+#scroller {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    display: none;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+#scroller>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    top: 0%;
+    position: absolute;
+    animation: going 2s linear 2s infinite;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    transform: rotate(90deg);
+    top: 6px;
+    right: -2.6799999999999997px;
+    position: absolute;
+}
+
+@keyframes going {
+    from {
+        top: -10%;
+    }
+
+    to {
+        top: 60%
+    }
+}
+
+.welcome-msg {
+    color: white;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    background: -webkit-linear-gradient(rgb(255, 88, 88), rgb(217, 255, 4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
