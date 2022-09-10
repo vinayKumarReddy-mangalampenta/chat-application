@@ -139,11 +139,11 @@ class ChatWindow extends Component {
 
     onDeleteMsg = (id) => {
         const db = getDatabase();
-        alert("We Are having some trouble on delete option we will bring that back ASAP")
-        // set(ref(db, `messages/Timestamp(seconds=${id.seconds}, nanoseconds=${id.nanoseconds})`), null)
-        //     .catch((error) => {
-        //         alert("Unable Delete MSg Please check your Internet Connection")
-        //     });
+        // alert("We Are having some trouble on delete option we will bring that back ASAP")
+        set(ref(db, `messages/Timestamp(seconds=${id.seconds}, nanoseconds=${id.nanoseconds})`), null)
+            .catch((error) => {
+                alert("Unable Delete MSg Please check your Internet Connection")
+            });
     }
 
     OnSendMsg = (event) => {
