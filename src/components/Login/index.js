@@ -13,7 +13,7 @@ const Login = () => {
     const [number, setNumber] = useState("")
     const [name, setName] = useState("")
     const [otp, setOtp] = useState("")
-    const [otpsent, setOtpSent] = useState(false)
+    const [otpsent, setOtpSent] = useState(false) // need to change to false to show only when otp had sent
     const [register, setRegister] = useState(true)
     const [open, setOpen] = useState(true);
     const [errMsg, setErrMsg] = useState("")
@@ -95,7 +95,7 @@ const Login = () => {
         return (
             <div>
                 <Popup open={open} closeOnDocumentClick onClose={closeModal}>
-                    <div className="modal">
+                    <div className="modal" style={{ width: "" }}>
                         <button className="close" onClick={() => {
                             setOtp("")
                             closeModal()
@@ -192,3 +192,4 @@ const Login = () => {
 }
 
 export default Login
+

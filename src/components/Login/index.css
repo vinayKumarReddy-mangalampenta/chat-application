@@ -115,7 +115,7 @@
     align-items: center;
     justify-content: center;
 
-   
+
     margin-bottom: 10px;
 }
 
@@ -151,7 +151,7 @@
 
     }
 
-   
+
     /* .number-input {
         font-size: 13px;
     } */
@@ -206,7 +206,8 @@
 
 .popup-content {
     border-radius: 5px;
-    padding: 20px;
+    width: 80% !important;
+    padding: 30px!important;
 }
 
 .modal {
@@ -240,14 +241,17 @@
     /* width: 100%; */
     height: 50px;
 }
-.Header > .logo-con {
+
+.Header>.logo-con {
     height: 35px;
     margin: 0;
 }
-.Header > h2 {
-    color: white ;
+
+.Header>h2 {
+    color: white;
 }
-.Header > .btn {
+
+.Header>.btn {
     background-color: #40182c;
 
 }

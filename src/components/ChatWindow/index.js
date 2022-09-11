@@ -74,33 +74,17 @@ class ChatWindow extends Component {
         //     const data = snapshot.val();
         //     console.log(data)
         // });
-
-       
         this.getMessages()
-
     }
 
 
     getMessages = () => {
-        // onValue(child(dbRef, "messages")).then((snapshot) => {
-        //     if (snapshot.exists()) {
-
-        //         const dataObject = snapshot.val()
-        //         var dataArray = Object.keys(dataObject).map(function (k) { return dataObject[k] });
-        //         this.setState({ array: dataArray })
-        //     } else {
-        //         console.log("No data available");
-        //     }
-        // }).catch((error) => {
-        //     console.error(error);
-        // });
+        
         const db = getDatabase();
         const starCountRef = ref(db, 'messages/');
         onValue(starCountRef, (snapshot) => {
             if (snapshot.exists()) {
                 const dataObject = snapshot.val();
-                // console.log(daa)
-
                 var dataArray = Object.keys(dataObject).map(function (k) { return dataObject[k] });
                 const sortByDate = arr => {
                     const sorter = (a, b) => {
@@ -164,14 +148,14 @@ class ChatWindow extends Component {
 
     }
 
-    scrollToBottom = () => {
-        document.getElementById('messages').animate({ scrollTop: document.getElementById('messages').scrollHeight }, {
-            duration: 2000,
-            iterations: 1,
-        });
-        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight + 20
+    // scrollToBottom = () => {
+    //     document.getElementById('messages').animate({ scrollTop: document.getElementById('messages').scrollHeight }, {
+    //         duration: 2000,
+    //         iterations: 1,
+    //     });
+    //     document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight + 20
 
-    }
+    // }
     onScroll = () => {
         if (document.getElementById('messages').scrollHeight - document.getElementById('messages').scrollTop > 900) {
             document.getElementById("scroller").style.display = "flex"
@@ -182,14 +166,7 @@ class ChatWindow extends Component {
     }
 
     render() {
-        // const { senderName, array, msgInput } = this.state
-        // const starCountRef = ref(dbRef, 'messages/');
-        // this.fetchMessages()
-        // window.onscroll(() => {
-        //     console.log("scrolling")
-        // })
         const { array, msgInput, userNum } = this.state
-        // const array1 = [...array,{}]
         return (
 
             <div className="chat-con">

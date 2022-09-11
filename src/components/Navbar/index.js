@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import "../EnterPage/index.css"
+import "../Login/index.css"
 import { useNavigate } from "react-router-dom";
 
 function Header() {
