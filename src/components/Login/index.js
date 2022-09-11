@@ -42,7 +42,6 @@ const Login = () => {
                         }).catch((error) => {
                             setErrMsg("Something went Wrong")
                         });
-
                 } else {
                     setErrMsg("User Doesn't exists Please Sign Up")
                 }

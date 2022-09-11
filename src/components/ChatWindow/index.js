@@ -92,7 +92,6 @@ class ChatWindow extends Component {
                     }
                     arr.sort(sorter);
                 };
-
                 sortByDate(dataArray)
                 this.setState({ array: dataArray })
                 document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight + 200
@@ -106,17 +105,24 @@ class ChatWindow extends Component {
         const newId = uuidv4()
         let event = new Date()
         const timeStamp = Timestamp.now()
-        const data = {
-            name: userName,
-            msgText: userMsg,
+        // const data = { // for group 
+        //     name: userName,
+        //     msgText: userMsg,
+        //     id: newId,
+        //     msgID: timeStamp,
+        //     time: `${event}`,
+        //     number: this.state.userNum,
+        //     color: `${"#" + Math.floor(Math.random() * 0x1000000).toString(16)}`
+        // }
+          const data2 = {
+            msgText: "hey vinay",
             id: newId,
             msgID: timeStamp,
             time: `${event}`,
-            number: this.state.userNum,
-            color: `${"#" + Math.floor(Math.random() * 0x1000000).toString(16)}`
+            senderId:"2394d-b17e-48cc-8276-6c9b973a950e52353",
         }
 
-        set(ref(db, `messages/${timeStamp}`), data);
+        set(ref(db, `privatemessages/${"a687fa98-2ea7-491f-85f6-1f03574a4746"}/${timeStamp}`), data2);
         // this.getMessages()
     }
 
@@ -167,6 +173,7 @@ class ChatWindow extends Component {
 
     render() {
         const { array, msgInput, userNum } = this.state
+        // this.addNewMessage()
         return (
 
             <div className="chat-con">
